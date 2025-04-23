@@ -1,83 +1,42 @@
-const productos = [
-    {
-      nombre: "Banana",
-      descripcion: "Banana ecuatoriana de alta calidad",
-      precio: 120,
-      imagen: "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Palta",
-      descripcion: "Palta chilena lista para consumir",
-      precio: 350,
-      imagen: "https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Mango",
-      descripcion: "Mango brasileño jugoso y dulce",
-      precio: 220,
-      imagen: "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Manzana",
-      descripcion: "Manzana roja jugosa y crujiente",
-      precio: 180,
-      imagen: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Naranja",
-      descripcion: "Naranja dulce y refrescante",
-      precio: 150,
-      imagen: "https://images.unsplash.com/photo-1547514701-42782101795e?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Fresa",
-      descripcion: "Fresa fresca y dulce, perfecta para postres",
-      precio: 250,
-      imagen: "https://plus.unsplash.com/premium_photo-1724256148318-388029ff4dd4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Piña",
-      descripcion: "Piña tropical dulce y refrescante",
-      precio: 300,
-      imagen: "https://images.unsplash.com/photo-1490885578174-acda8905c2c6?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-      nombre: "Sandía",
-      descripcion: "Sandía fresca, ideal para el calor",
-      precio: 100,
-      imagen: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+// index.js
+// Función para activar eventos click en botones
+const activarClickEnBotones = () => {
+  const botonesAgregar = document.querySelectorAll(".button.button-outline.button-add");
+  
+  if (botonesAgregar) {
+    for (const boton of botonesAgregar) {
+      boton.addEventListener("click", (event) => {
+        agregarAlCarrito(parseInt(event.target.id));
+      });
     }
-  ];
-  
-  
-  
-  
-  
-  
-  function retornarCardHTML(producto) {
-    return `
-      <div class="card">
-        <div class="card-img-container">
-          <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img">
-        </div>
-        <div class="card-content">
-          <h2 class="card-title">${producto.nombre}</h2>
-          <p class="card-description">${producto.descripcion}</p>
-          <p class="card-price">$${producto.precio}</p>
-          <button class="card-btn">Agregar al carrito</button>
-        </div>
-      </div>
-    `;
   }
-  
-  // Optimización: Crear el HTML antes de insertarlo todo de una vez
+};
+
+// Función de ejemplo que carga productos al DOM
+const cargarProductos = () => {
   const contenedor = document.getElementById("contenedor-productos");
-  let contenidoHTML = ''; // Aquí almacenamos todo el HTML
   
-  productos.forEach(producto => {
-    contenidoHTML += retornarCardHTML(producto); // Agregar cada card al contenido
+  productos.forEach((producto) => {
+    contenedor.innerHTML += `
+<div class="card">
+  <div class="card-img-container">
+    <img class="card-img" src="${producto.imagen}" alt="${producto.nombre}">
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">${producto.nombre}</h3>
+    <p class="card-description">${producto.descripcion}</p>
+    <p class="card-price">$${producto.precio}</p>
+    <button class="card-btn" id="${producto.id}">Agregar</button>
+  </div>
+</div>
+    `;
   });
+
+  // Activar los botones una vez se cargan los productos
+  activarClickEnBotones();
+};
+
+// Llamar a cargarProductos al iniciar
+cargarProductos();
   
-  // Insertamos todo el contenido al mismo tiempo
-  contenedor.innerHTML = contenidoHTML;
   

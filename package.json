@@ -1,0 +1,21 @@
+{
+  "name": "teclab-id",
+  "version": "1.0.0",
+  "description": "La **Asociación Sudamericana de Productores de Frutas** está lanzando su cadena de fruterías en toda Latinoamérica, junto con un sistema de **e-commerce** que permitirá a los clientes realizar compras en línea. Este sistema será funcional tanto en computadoras de escritorio como en dispositivos móviles, sirviendo como base para futuros desarrollos en el segmento móvil.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosEstebanDev/teclab-ID.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MarcosEstebanDev/teclab-ID/issues"
+  },
+  "homepage": "https://github.com/MarcosEstebanDev/teclab-ID#readme"
+}
