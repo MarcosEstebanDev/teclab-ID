@@ -1,49 +1,55 @@
-# Actividad 1: E-commerce de Frutas
+# Actividad 3: Interfaz de Desarrollo
 
-## Contexto
-La **Asociación Sudamericana de Productores de Frutas** está lanzando su cadena de fruterías en toda Latinoamérica, junto con un sistema de **e-commerce** que permitirá a los clientes realizar compras en línea. Este sistema será funcional tanto en computadoras de escritorio como en dispositivos móviles, sirviendo como base para futuros desarrollos en el segmento móvil.
+## Situación: Evolución del Proyecto
+El desarrollo presentado como mockup del proyecto web ha sido un éxito. Ahora es necesario avanzar hacia la siguiente etapa para generar mayor interactividad en el sitio. En esta oportunidad, se requiere aplicar cambios sobre el mockup original, recuperando el código del proyecto trabajado previamente con la API del módulo I.
 
-El objetivo inicial es construir un **mockup funcional** del proyecto web, utilizando un código base de HTML y CSS proporcionado por el equipo de diseño, al cual se le añadirá la lógica necesaria con **JavaScript**.
-
----
-
-## Consigna
-El proyecto requiere implementar la lógica en **JavaScript** para generar dinámicamente las tarjetas de productos (Cards) y cargarlas en el DOM. A continuación, se detallan los pasos necesarios:
-
-### 1. Función `retornarCardHTML(producto)`
-- **Descripción**: Esta función recibe un objeto literal que representa un producto y retorna un bloque de código HTML utilizando **Template Strings**.
-- **Requisitos**:
-  - El bloque HTML debe incluir las propiedades del objeto: `imagen`, `nombre`, `descripcion`, `precio`.
-  - Utilizar el atributo `id` del botón para referenciar la plantilla literal: `${producto.id}`.
-
-### 2. Función `cargarProductos(array)`
-- **Descripción**: Esta función recibe un array de objetos (como `productos`) y genera dinámicamente las tarjetas de productos en el DOM.
-- **Requisitos**:
-  - Iterar el array utilizando el método `forEach()`.
-  - Llamar a `retornarCardHTML(producto)` en cada iteración para generar el HTML de cada producto.
-  - Referenciar el contenedor `<div id="contenedor-productos">` en el DOM utilizando `getElementById`.
-  - Escribir de manera acumulativa todas las tarjetas generadas en el contenedor.
-
-### 3. Integración
-- **Pasos**:
-  - Llamar a la función `cargarProductos()` pasando el array `productos` como parámetro.
-  - Eliminar el bloque HTML estático de la tarjeta modelo en `index.html`, ya que las tarjetas serán generadas dinámicamente.
-  - Asegurarse de que el archivo `index.js` esté correctamente referenciado en el documento HTML.
+Las pruebas sobre el armado del carrito de compras han sido exitosas, y contamos con el visto bueno para continuar con los próximos módulos del proyecto.
 
 ---
 
-## Estructura del Proyecto
-El proyecto está compuesto por los siguientes archivos:
+## Consignas
+A continuación, se detallan los pasos necesarios para implementar las nuevas funcionalidades:
 
-1. **`index.html`**: Contiene la estructura base del sitio web.
-2. **`style.css`**: Define los estilos para las tarjetas y el diseño general.
-3. **`index.js`**: Implementa la lógica para generar y cargar dinámicamente las tarjetas de productos.
+### 1. Almacenamiento Progresivo del Carrito
+- **Archivo**: `carrito.js`
+- **Descripción**: Editar el archivo para almacenar el array `carritoFrutas` de forma progresiva a medida que se agregan productos.
+- **Requisitos**:
+  - Crear una función que utilice `LocalStorage` como mecanismo de persistencia.
+
+### 2. Función `almacenarCarrito()`
+- **Descripción**: Validar si la constante `carritoFrutas` contiene al menos un elemento. Si es así:
+  - Crear una clave en `LocalStorage` con el mismo nombre del array.
+  - Guardar el array utilizando `JSON.stringify()`.
+- **Sugerencia**: Utilizar el operador lógico `AND` para validar la existencia de elementos en el carrito. Como alternativa, se puede usar un `if` simple.
+
+### 3. Integración con `agregarAlCarrito()`
+- **Descripción**: Implementar la función `almacenarCarrito()` dentro de `agregarAlCarrito()` para que, cada vez que se agregue un producto al array `carritoFrutas`, este se guarde automáticamente en `LocalStorage`.
+- **Nota**: Eliminar el uso de `console.table()` que mostraba el contenido del carrito.
+
+### 4. Función `recuperarCarrito()`
+- **Descripción**: Crear una función que recupere la información almacenada en `LocalStorage` bajo la clave `carritoFrutas`.
+- **Requisitos**:
+  - Retornar la información almacenada o un array vacío si la clave no existe.
+  - Utilizar el operador lógico `OR` para manejar valores por defecto.
+
+### 5. Reubicación de `carritoFrutas`
+- **Descripción**: Mover la creación de la constante `carritoFrutas` debajo de la función `recuperarCarrito()` y asignarle el valor retornado por esta función.
+
+### 6. Validación de Archivos
+- **Descripción**: Asegurarse de que el archivo `carrito.js` esté referenciado en los archivos `index.html` y `checkout.html`.
+- **Nota**: No utilizar el atributo `defer` en el script, ya que no interactúa directamente con el DOM.
 
 ---
 
 ## Ejecución
-1. **Abrir el archivo `index.html` en el navegador**.
-2. Verificar que las tarjetas de productos se generen dinámicamente en el contenedor.
-3. Probar la funcionalidad en diferentes dispositivos para garantizar la compatibilidad.
+1. **Cargar el proyecto con Live Server**.
+2. **Agregar productos al carrito** desde `index.html`.
+3. **Navegar a `checkout.html`** y validar en la consola de DevTools que `carritoFrutas` contiene los productos previamente agregados.
+4. Verificar que el carrito se almacene correctamente en `LocalStorage`.
+
+---
+
+## Entrega
+Se debe presentar el archivo `carrito.js` con las funcionalidades implementadas.
 
 ---
