@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MarcosEstebanDev/teclab-ID/issues"
   },
-  "homepage": "https://github.com/MarcosEstebanDev/teclab-ID#readme"
+  "homepage": "https://github.com/MarcosEstebanDev/teclab-ID#readme",
+  "dependencies": {
+    "teclab-id": "file:"
+  }
 }

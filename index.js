@@ -1,7 +1,7 @@
 // index.js
 // Función para activar eventos click en botones
 const activarClickEnBotones = () => {
-  const botonesAgregar = document.querySelectorAll(".button.button-outline.button-add");
+const botonesAgregar = document.querySelectorAll(".card-btn");
   
   if (botonesAgregar) {
     for (const boton of botonesAgregar) {
@@ -15,7 +15,7 @@ const activarClickEnBotones = () => {
 // Función de ejemplo que carga productos al DOM
 const cargarProductos = () => {
   const contenedor = document.getElementById("contenedor-productos");
-  
+
   productos.forEach((producto) => {
     contenedor.innerHTML += `
 <div class="card">
